@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.content.Intent;
+import android.widget.EditText;
+import android.view.View;
 
-
-import android.webkit.WebView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,28 +28,23 @@ public class MainActivity extends AppCompatActivity {
         Spinner spinner = (Spinner) findViewById(R.id.TransactionNameValue);
         spinner.setAdapter(adapter);
 
-
-//        //Setting button click handler
-//        Button btnReceiptGenerate = (Button)findViewById(R.id.BGenerate);
-//        OnClickListener OnReceiptGenerateClick = new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        };
-
-
     }
 
-    public void onGenerateButtonClick() {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
+    public void onGenerateButtonClick(View view) {
+        Intent intent = new Intent(this, DisplayReceipt.class);
         // Получаем текстовое поле в текущей Activity
-        EditText editText = (EditText) findViewById(R.id.edit_message);
+        EditText editText = (EditText) findViewById(R.id.AmountValue);
         // Получае текст данного текстового поля
-        String message = editText.getText().toString();
+        String strParam = editText.getText().toString();
         // Добавляем с помощью свойства putExtra объект - первый параметр - ключ,
         // второй параметр - значение этого объекта
-        intent.putExtra(EXTRA_MESSAGE, message);
+        intent.putExtra("TransactionAmount", strParam);
+
+        Spinner spinner = (Spinner) findViewById(R.id.TransactionNameValue);
+        strParam = spinner.getSelectedItem().toString();
+
+        intent.putExtra("TransactionName", strParam);
+
         // запуск activity
         startActivity(intent);
     }
