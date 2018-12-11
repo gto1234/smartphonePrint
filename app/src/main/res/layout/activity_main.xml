@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/MActive"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
 
     <TextView
-        android:id="@+id/TTransactionName"
-        android:layout_width="wrap_content"
+        android:id="@+id/LTransactionName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="true"
-        android:text="Transaction" />
+        android:text="Transaction Name" />
 
     <Spinner
-        android:id="@+id/STransactionName"
-        android:layout_width="0dp"
+        android:id="@+id/TransactionNameValue"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp" />
+
+    <TextView
+        android:id="@+id/LAmountValue"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/TTransactionName" />
+        android:text="Amount" />
 
+    <EditText
+        android:id="@+id/AmountValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/BGenerate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Отобразить"
+        android:onClick="onGenerateButtonClick" />
+
+</LinearLayout>
